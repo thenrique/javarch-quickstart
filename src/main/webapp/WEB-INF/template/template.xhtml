@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+	<h:head>
+		<f:facet name="first">
+			<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+			
+			<title>Quickstart - ShowCase [ Interface Administativa<ui:insert name="titulo"><h:outputText value="#{msg['app.titulo']}" /> </ui:insert> ] </title>
+		</f:facet>
+		<h:outputStylesheet library="css" name="custom-primefaces.css" />
+		
+		<style type="text/css">
+			.ui-layout-north {
+				z-index: 20 !important;
+				overflow: visible !important;;
+			}
+			
+			.ui-layout-north .ui-layout-unit-content {
+				overflow: visible !important;
+			}
+			</style>
+			
+				
+	<ui:insert name="head">
+	
+	</ui:insert>
+	</h:head>
+
+
+	<h:body>
+
+		<p:layout fullPage="true">
+
+			<p:layoutUnit id="top" position="north" size="50">
+				
+				<p:menubar autoSubmenuDisplay="true">
+					<p:submenu label="Arquivo" icon="ui-icon-document">
+						<p:submenu label="Novo" icon="ui-icon-contact">
+							<p:menuitem value="Categoria" url="/adm/categoria/create.jsf" helpText="CTRL+N" />
+							<p:menuitem value="Produto" url="/adm/produto/create.jsf" helpText="CTRL+O" />
+						</p:submenu>
+						
+						<p:menuitem value="Sair" url="#{request.contextPath}/j_spring_security_logout" />
+					</p:submenu>
+
+					<p:submenu label="Edit" icon="ui-icon-pencil">
+						<p:menuitem value="Undo" url="#"
+							icon="ui-icon-arrowreturnthick-1-w" helpText="CTRL+Z"></p:menuitem>
+						<p:menuitem value="Redo" url="#"
+							icon="ui-icon-arrowreturnthick-1-e" helpText="CTRL+Y"></p:menuitem>
+					</p:submenu>
+
+					<p:submenu label="Help" icon="ui-icon-help">
+						<p:menuitem value="Contents" url="#" />
+						<p:submenu label="Search" icon="ui-icon-search">
+							<p:submenu label="Text">
+								<p:menuitem value="Workspace" url="#" />
+							</p:submenu>
+							<p:menuitem value="File" url="#" />
+						</p:submenu>
+					</p:submenu>
+				</p:menubar>
+			</p:layoutUnit>
+
+			<p:layoutUnit id="bottom" position="south" size="60">
+				<h:outputLink
+					value="#">
+						JavaEE quickstart project						
+                    </h:outputLink>
+
+				<br />
+
+				<h:outputLink
+					value="#">
+					JavaEE application reference architecture based on JavaServer Faces, Spring Framework, Hibernate.
+					Licensed under the Apache License, Version 2.0
+                    </h:outputLink>
+			</p:layoutUnit>
+
+			<p:layoutUnit id="left" position="west" size="300"  
+				 collapsible="true" header="Opções" minSize="200">
+				
+					<p:accordionPanel activeIndex="0" autoHeight="false">
+					<p:tab title="Perfil Administrador">				
+						
+						<h:form>
+							<p:commandLink action="/adm/categoria/list.xhtml" style="margin-right:20px;" ajax="false">  
+							        <h:outputText value="Categorias" />  
+							</p:commandLink>
+							<p />
+							<p:commandLink action="/adm/produto/list.xhtml" style="margin-right:20px;" ajax="false">  
+							        <h:outputText value="Produtos" />  
+							    </p:commandLink>    
+					     </h:form>
+					      
+						<br />
+						
+					</p:tab>
+
+					<p:tab title="Perfil Cliente">
+						
+						  <h:form>
+							<ui:repeat var="produto" value="#{categoriaMBean.categoriasAsList}">
+								
+									<h:commandLink value="#{produto.titulo}" action="#{vitrineMBean.mudaCategoriaSelecionada}"  >
+									
+										<f:setPropertyActionListener target="#{vitrineMBean.categoriaSelecionada}" value="#{produto}"/>
+										<f:ajax render="@all" execute="@form"/>	
+									</h:commandLink>
+								<p/>         	
+				            </ui:repeat>	
+						</h:form>									
+					</p:tab>
+
+					<p:tab title="Menu 3">
+						<h:outputText value="Menu 3 Content" />
+					</p:tab>
+				</p:accordionPanel>
+			</p:layoutUnit>
+
+			<p:layoutUnit id="right" position="east" size="250" header="Notícias"
+				resizable="true" closable="true" collapsible="true"
+				style="text-align:center">
+
+				<br />
+						<p:calendar mode="inline" navigator="none" />
+						
+			</p:layoutUnit>
+
+			<p:layoutUnit id="center" position="center">
+
+	
+				<ui:insert name="corpo">
+				
+				</ui:insert>
+				
+
+			</p:layoutUnit>
+
+		</p:layout>
+
+		<p:dialog header="Basic Dialog" widgetVar="dlg1" modal="true">
+			<h:outputText value="Resistance to PrimeFaces is futile!" />
+		</p:dialog>
+
+	</h:body>
+
+</f:view>
+</html>

@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	 xmlns:lv="http://java.sun.com/jsf/composite/lv"
+	template="/WEB-INF/template/template_publico.xhtml">
+
+
+
+<ui:define name="head">
+
+	
+</ui:define>
+
+
+	<ui:define name="titulo">
+		- Carrinho Visualiziar
+	</ui:define>
+	
+	<ui:define name="menuLateral">
+		
+	</ui:define>
+	<ui:define name="corpo">
+	
+	<p:panel header="Detalhes do carrinho de compras" id="panelCarrinho">
+	
+			<h:form prependId="false">
+			
+				<p:growl id="mensagensGrowl"/>		
+				<p:dataTable var="produto" value="#{carrinhoDeComprasMBean.produtosEmCarrinhoAsDataModel}"
+			  		emptyMessage="Não há produtos no seu carrinho de compras!"
+			  		 paginator="true" paginatorPosition="bottom">
+			  			
+			
+			        <p:column headerText="Codigo Produto">
+			            <h:outputText value="#{produto.id}" />
+			        </p:column>
+			
+			        <p:column headerText="Título">
+			            <h:outputText value="#{produto.titulo}" />
+			        </p:column>
+			        
+			        
+			        <p:column headerText="Valor">
+			            <h:outputText value="#{produto.valor}" />
+			        </p:column>
+						  
+						  
+			 	<p:column headerText="Opções" >
+            
+		            <p:commandButton action="#{carrinhoDeComprasMBean.removerProdutoNoCarrinho}" value="Remover" update="@form">
+		            	<f:setPropertyActionListener value="#{produto}"  
+		                    target="#{carrinhoDeComprasMBean.produto}" />  
+		            </p:commandButton>
+		          
+        	</p:column>			       
+	        
+	  		</p:dataTable>
+	  		
+	  			<p:commandButton value="Concluir Compra" action="#{carrinhoDeComprasMBean.concluirCompra}"  update="@form mensagensGrowl" />
+	  			  
+		            <p:commandButton action="/vitrine/principal" value="Voltar" ajax="false" immediate="true"/>
+            	
+	  			
+			</h:form>
+			
+	</p:panel>			 
+  				 
+	</ui:define>
+	
+</ui:composition>
+

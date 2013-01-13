@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	 xmlns:lv="http://java.sun.com/jsf/composite/lv"
+	template="/WEB-INF/template/template_publico.xhtml">
+
+
+<ui:define name="head">
+
+	<f:metadata>
+		<f:viewParam name="idProduto" value="#{produtoMBean.entidade.id}"/>
+		<f:event listener="#{produtoMBean.loadAfterSetViewParamId}" type="preRenderView"/>
+	</f:metadata>
+	
+</ui:define>
+
+
+
+	<ui:define name="titulo">
+		- Detalhes do produto
+	</ui:define>
+	
+	<ui:define name="menuLateral">
+		
+	</ui:define>
+	
+	<ui:define name="corpo">
+		
+	<p:panel header="Visualização de detalhes do produto" id="panelCadastro">
+	
+	
+			<h:form prependId="false">
+			
+				<b><h:outputLabel value="Título" for="titulo"/></b>
+				<br/>
+				<h:outputText value="#{produtoMBean.entidade.titulo}" label="titulo" id="titulo" size="100" />
+									
+				<br/>
+				
+				<b><h:outputLabel value="Descrição" for="descricao"/></b>
+				<br/>
+				<h:outputText value="#{produtoMBean.entidade.descricao}" label="descricao" id="descricao" cols="100"  />
+				
+				<br/>
+				
+				<b><h:outputLabel value="Categoria" for="categoria"/></b>
+				<br/>
+				<h:outputText value="produtoMBean.entidade.descricao" />
+				
+				<br/>
+				
+				
+				<b><h:outputLabel value="Valor" for="valor"/> </b><br/>
+				<br/>
+				<h:outputText  value="#{produtoMBean.entidade.valor}" label="valor" id="valor" />
+									
+				
+				<br/>
+				
+				
+				<b><h:outputLabel value="Disponível em estoque?" for="disponivel"/></b>
+				<br/>
+				<lv:simNao value="#{produtoMBean.entidade.disponivel}"/>
+					
+				<br/>
+				
+				<p:commandButton action="#{carrinhoDeComprasMBean.adicionarProdutoNoCarrinho}"  ajax="false"  value="Colocar produto no carrinho">
+					<f:setPropertyActionListener target="#{carrinhoDeComprasMBean.produto}" value="#{produtoMBean.entidade}" />
+				</p:commandButton>
+				
+				<p:commandButton action="/vitrine/principal" value="Voltar" ajax="false" immediate="true"/>
+			</h:form>
+			
+	</p:panel>	
+  			
+	</ui:define>
+	
+</ui:composition>
+
+

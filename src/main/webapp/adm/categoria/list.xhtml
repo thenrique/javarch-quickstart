@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	 xmlns:lv="http://java.sun.com/jsf/composite/lv"
+	template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="titulo">
+		- Página inicial.
+	</ui:define>
+	
+	
+	<ui:define name="corpo">
+			
+			
+	<h:form>
+		<p:button value="Cadastrar nova" outcome="/adm/categoria/create.jsf" />
+		<p:growl />
+	    <p:dataTable var="categoria" value="#{categoriaMBean.findAllAsDataModel}" id="dataTable">
+	
+	        <f:facet name="header">
+	            Lista de Categorias
+	        </f:facet>
+	
+	        <p:column headerText="Codigo">
+	            <h:outputText value="#{categoria.id}" />
+	        </p:column>
+	
+	        <p:column headerText="Título da categoria">
+	            <h:outputText value="#{categoria.titulo}" />
+	        </p:column>
+	
+		    <p:column headerText="Opções" >
+	            <p:button value="Editar" outcome="create" > 
+	            	<f:param name="idCategoria" value="#{categoria.id}"/>
+	            	
+	            </p:button>
+	            
+	            <p:commandButton action="#{categoriaMBean.remover}" value="Remover"  update="@form">
+	            	<f:setPropertyActionListener value="#{categoria}"  
+	                    target="#{categoriaMBean.entidade}" />  
+	            </p:commandButton>
+	            	
+	        </p:column>		
+	
+	    </p:dataTable>
+	    
+	    </h:form>
+	</ui:define>
+	
+</ui:composition>

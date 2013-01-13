@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:lv="http://java.sun.com/jsf/composite/lv"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Interface Administativa<ui:insert name="titulo"><h:outputText value="#{msg['app.titulo']}" /> </ui:insert></title>
+	
+	<ui:insert name="head">
+	
+	</ui:insert>
+</h:head>
+
+<h:body >
+
+		
+	<ui:insert name="menu">
+			
+		<h:form>
+		
+		    <p:growl id="messages"/>
+		
+			
+		    <p:menubar autoSubmenuDisplay="true">
+		    	<p:menuitem value="Meu Carrinho de Compras (#{carrinhoDeComprasMBean.carrinho.quantidadeDeProdutos} Produtos)" url="/vitrine/carrinho/visualizar.jsf" icon="ui-icon ui-icon-document" />				        
+				
+		        <p:menuitem value="Sair" url="/principal.jsf" icon="ui-icon ui-icon-close" />
+		    </p:menubar>
+		
+		</h:form>
+	</ui:insert>	
+	
+	
+		<table>
+				<tr>
+					<td>
+					<ui:insert name="menuLateral">
+						
+					  <lv:menuCliente titulo="Categorias" 
+					  				 categoriaSelecionada="#{vitrineMBean.categoriaSelecionada}" 
+					  				 metodoAcaoSelecionar="#{vitrineMBean.mudaCategoriaSelecionada}"
+					  				 listaCategorias="#{categoriaMBean.categoriasAsList}" 
+					  				 />
+  				 
+					</ui:insert>
+					</td>
+					<td>
+					<ui:insert name="corpo">
+	
+					</ui:insert>
+					</td>
+				</tr>
+			</table>
+			
+	
+	
+	
+	<div align="center">
+	<p>
+		<ui:insert name="rodape">
+			Trabalho JSF 2.0 - Loja Virtual
+		</ui:insert>
+	</p>		
+	</div>
+</h:body>
+</html>

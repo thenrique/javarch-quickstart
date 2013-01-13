@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template.xhtml">
+
+
+
+<ui:define name="head">
+
+	<f:metadata>
+		<f:viewParam name="idCategoria" value="#{categoriaMBean.entidade.id}"/>
+		<f:event listener="#{categoriaMBean.loadAfterSetViewParamId}" type="preRenderView"/>
+	</f:metadata>
+	
+</ui:define>
+
+
+	<ui:define name="titulo">
+		- Página cadastro categoria.
+	</ui:define>
+	
+	
+	<ui:define name="corpo">
+		
+		<p:panel header="#{categoriaMBean.entidade.id == null ? 'Cadastrar categoria' : 'Editar categoria'}" id="panelCadastro">
+				<h:form prependId="false">
+				
+					<p:growl />
+					<h:outputLabel value="Categoria: " for="titulo" />
+					
+					<br/>
+					<p:inputText value="#{categoriaMBean.entidade.titulo}"
+						alt="Digite o nome da categoria"  id="titulo" size="30"/>
+					
+					<p/>
+					<p:commandButton value="Cadastrar"
+						action="#{categoriaMBean.cadastrar}" ajax="false" update="panelCadastro" rendered="#{categoriaMBean.entidade.id == null}"/>
+						
+					<p:commandButton value="Atualizar"
+						action="#{categoriaMBean.atualizar}" update="@form" rendered="#{categoriaMBean.entidade.id != null}">
+					</p:commandButton>
+						
+						<p:commandButton action="list.jsf" value="Voltar para listagem" ajax="false" immediate="true"/>
+				
+			</h:form>
+		</p:panel>
+	</ui:define>
+	
+</ui:composition>
+
