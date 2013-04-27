@@ -23,7 +23,7 @@
 		<level value="debug" />
 	</logger>
 	
-	<logger name="com.github.luksrn.webapp.core">
+	<logger name="com.github.javarch">
 		<level value="debug" />
 	</logger>
 

@@ -2,6 +2,7 @@ package org.bootstrap.project.controller;
 
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.inject.Inject;
 
 import org.bootstrap.project.domain.CarrinhoDeCompras;
 import org.bootstrap.project.domain.Produto;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.github.javarch.jsf.AbstractManagedBean;
+import com.github.javarch.jsf.context.MessageContext;
  
 /**
  * UrlBasedViewResolver jsf
@@ -23,27 +25,29 @@ public class CarrinhoDeComprasMBean extends AbstractManagedBean<CarrinhoDeCompra
 
 	private Produto produto;	
 	
+	@Inject
+	private MessageContext messageContext;
+	
 	private CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
 	
 	public void adicionarProdutoNoCarrinho(){		
 		if ( carrinho.adicionarProduto(produto) ){				
-			addMessageSuccess("Produto " + produto + " adicionado no seu carrinho!");
+			messageContext.addInfo("Produto " + produto + " adicionado no seu carrinho!");
 		}else{
-			addMessageError("O produto " + produto.getTitulo() +  " não está disponível no estoque!");
-		}
+			messageContext.addInfo("O produto " + produto.getTitulo() +  " não está disponível no estoque!");
+		}		
 	}
 	
 	public void removerProdutoNoCarrinho(){		
 		carrinho.removerProduto(produto);		
-		addMessageSuccess("Produto " + produto + " removido no seu carrinho!");
-		
+		messageContext.addInfo("Produto " + produto + " removido no seu carrinho!");		
 	}
 	
 	public void concluirCompra(){
 		if ( carrinho.possuiProdutos() ){
-			addMessageSuccess( "Produtos comprados com sucesso!");			
+			messageContext.addInfo( "Produtos comprados com sucesso!");			
 		}else{
-			addMessageError("Você não possui produtos no carrinho de compras!");
+			messageContext.addError("Você no possui produtos no carrinho de compras!");
 		}
 	}
 

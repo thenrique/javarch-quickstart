@@ -12,12 +12,11 @@ import com.github.javarch.jsf.AbstractCrudManagedBean;
 import com.github.javarch.jsf.SelectItemsUtils;
 
 @Component
-@Scope("view")
+@Scope( value="view" )
 @SuppressWarnings("serial")
 public class CategoriaMBean extends AbstractCrudManagedBean<Categoria> {
 	
 	private SelectItemsUtils selectItemsUtils = new SelectItemsUtils();
-
 	 
 	public CategoriaMBean(){
 		super();
@@ -25,12 +24,10 @@ public class CategoriaMBean extends AbstractCrudManagedBean<Categoria> {
 	}
 	
 	public List<SelectItem> getCategoriasAsSelectItem(){
-		return selectItemsUtils.createSelectItems(getRepository().findAll(), "id", "titulo", "Selecione uma categoria...");		
+		return selectItemsUtils.createSelectItems(getRepository().findAll( Categoria.class ), "id", "titulo", "Selecione uma categoria...");		
 	}
 	
 	public List<Categoria> getCategoriasAsList(){
-		return getRepository().findAll();
+		return getRepository().findAll( Categoria.class );
 	}
-		
-
 }

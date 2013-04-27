@@ -10,12 +10,21 @@ import com.github.javarch.persistence.orm.hibernate.conf.DataSourceH2Config;
 import com.github.javarch.persistence.orm.hibernate.conf.HibernateConfig;
 
 @Configuration
-@ComponentScan( basePackages = {"org.bootstrap"},
-		excludeFilters= { @ComponentScan.Filter( Configuration.class ) } )
-@Import({DataSourceH2Config.class,
+@ComponentScan( basePackages = {
+			"org.bootstrap",
+			"com.github.javarch.support.log" // TODO Melhorar essa configuração.			
+		},
+		excludeFilters= { 
+			@ComponentScan.Filter( Configuration.class ) 
+		} )
+@Import({
+		DataSourceH2Config.class,
 		HibernateConfig.class,
-		JavaServerFacesConfig.class})
-@ImportResource({ "classpath*:/applicationContext-security.xml"})
+		JavaServerFacesConfig.class
+		})
+@ImportResource({
+	"classpath*:/applicationContext-security.xml"
+	})
 public class AppConfig {
 
 	 

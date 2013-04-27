@@ -14,7 +14,7 @@ import com.github.javarch.persistence.orm.hibernate.AbstractPersistable;
 
 @Entity
 @Audited
-public class Categoria extends AbstractPersistable{
+public class Categoria extends AbstractPersistable {
  
 	private static final long serialVersionUID = 4513891696568524628L;
 
@@ -40,6 +40,4 @@ public class Categoria extends AbstractPersistable{
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
-	
-	
 }

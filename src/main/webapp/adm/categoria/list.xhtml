@@ -37,9 +37,9 @@
 	            	
 	            </p:button>
 	            
-	            <p:commandButton action="#{categoriaMBean.remover}" value="Remover"  update="@form">
+	            <p:commandButton action="#{remocaoCategoriaMBean.performAction}" value="Remover"  update="@form">
 	            	<f:setPropertyActionListener value="#{categoria}"  
-	                    target="#{categoriaMBean.entidade}" />  
+	                    target="#{remocaoCategoriaMBean.entidade}" />  
 	            </p:commandButton>
 	            	
 	        </p:column>		
