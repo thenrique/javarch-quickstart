@@ -1,10 +1,10 @@
-package org.bootstrap.project.controller;
+package org.bootstrap.project.categoria;
 
 import org.bootstrap.project.domain.Categoria;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.github.javarch.jsf.AbstractCreateManagedBean;
+import com.github.javarch.jsf.mbeans.AbstractCreateManagedBean;
 
 @Component
 @Scope( value="view" )

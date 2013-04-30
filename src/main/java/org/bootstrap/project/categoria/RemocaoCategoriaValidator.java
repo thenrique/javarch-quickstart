@@ -1,4 +1,4 @@
-package org.bootstrap.project.validator;
+package org.bootstrap.project.categoria;
 
 import org.bootstrap.project.domain.Categoria;
 import org.springframework.validation.Errors;

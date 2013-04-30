@@ -9,8 +9,8 @@ import org.bootstrap.project.domain.Produto;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.github.javarch.jsf.AbstractManagedBean;
 import com.github.javarch.jsf.context.MessageContext;
+import com.github.javarch.jsf.mbeans.AbstractManagedBean;
  
 /**
  * UrlBasedViewResolver jsf

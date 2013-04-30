@@ -17,7 +17,7 @@
 	<h:form>
 		<p:button value="Cadastrar nova" outcome="/adm/categoria/create.jsf" />
 		<p:growl />
-	    <p:dataTable var="categoria" value="#{categoriaMBean.findAllAsDataModel}" id="dataTable">
+	    <p:dataTable var="categoria" value="#{listagemCategoriaMBean.findAllAsDataModel}" id="dataTable">
 	
 	        <f:facet name="header">
 	            Lista de Categorias
@@ -39,7 +39,7 @@
 	            
 	            <p:commandButton action="#{remocaoCategoriaMBean.performAction}" value="Remover"  update="@form">
 	            	<f:setPropertyActionListener value="#{categoria}"  
-	                    target="#{remocaoCategoriaMBean.entidade}" />  
+	                    target="#{remocaoCategoriaMBean.entity}" />  
 	            </p:commandButton>
 	            	
 	        </p:column>		

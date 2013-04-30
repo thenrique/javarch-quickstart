@@ -9,7 +9,7 @@ import org.bootstrap.project.domain.Vitrine;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.github.javarch.jsf.AbstractManagedBean;
+import com.github.javarch.jsf.mbeans.AbstractManagedBean;
 
 @Component
 @Scope("session")

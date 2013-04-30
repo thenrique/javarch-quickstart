@@ -10,8 +10,8 @@ import org.bootstrap.project.domain.Produto;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.github.javarch.jsf.AbstractCreateManagedBean;
 import com.github.javarch.jsf.SelectItemsUtils;
+import com.github.javarch.jsf.mbeans.AbstractCreateManagedBean;
 import com.github.javarch.persistence.Repository;
 
 @Component
@@ -22,7 +22,7 @@ public class CadastroProdutoMBean extends AbstractCreateManagedBean<Produto> {
 	private SelectItemsUtils selectItemUtils;
 	
 	@Inject
-	private Repository<Categoria> categoriaRepository;
+	private Repository categoriaRepository;
 	
 	public CadastroProdutoMBean(){
 		outcomeSuccess = "/adm/produto/list.jsf?faces-redirect=true";
