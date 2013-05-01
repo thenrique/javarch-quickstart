@@ -32,9 +32,8 @@
 	        </p:column>
 	
 		    <p:column headerText="Opções" >
-	            <p:button value="Editar" outcome="create" > 
-	            	<f:param name="idCategoria" value="#{categoria.id}"/>
-	            	
+	            <p:button value="Editar" outcome="edit" > 
+	            	<f:param name="idCategoria" value="#{categoria.id}"/>	            	
 	            </p:button>
 	            
 	            <p:commandButton action="#{remocaoCategoriaMBean.performAction}" value="Remover"  update="@form">

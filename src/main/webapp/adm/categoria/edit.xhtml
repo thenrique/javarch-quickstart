@@ -5,13 +5,23 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template.xhtml">
 
+	<ui:define name="head">
+	
+		<f:metadata>
+			<f:viewParam name="idCategoria" value="#{atualizacaoCategoriaMBean.entity.id}"/>
+			<f:event listener="#{atualizacaoCategoriaMBean.loadAfterSetViewParamId}" type="preRenderView"/>
+		</f:metadata>
+		
+	</ui:define>
+	
+
 	<ui:define name="titulo">
-		- Página cadastro categoria.
+		- Página atualização categoria.
 	</ui:define>
 		
 	<ui:define name="corpo">
 		
-		<p:panel header="Cadastrar categoria" id="panelCadastro">
+		<p:panel header="Atualizar categoria" id="panelCadastro">
 				<h:form prependId="false">
 				
 					<p:growl />
@@ -20,13 +30,13 @@
 					
 					<br/>
 					
-					<p:inputText value="#{cadastroCategoriaMBean.entity.titulo}"
+					<p:inputText value="#{atualizacaoCategoriaMBean.entity.titulo}"
 						alt="Digite o nome da categoria"  id="titulo" size="30"/>
 					
 					<p/>
 					
-					<p:commandButton value="Cadastrar"
-						action="#{cadastroCategoriaMBean.performAction}" 
+					<p:commandButton value="Atualizar"
+						action="#{atualizacaoCategoriaMBean.performAction}" 
 						ajax="false" 
 						update="panelCadastro" />
 						
