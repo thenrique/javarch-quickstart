@@ -21,7 +21,7 @@
 					<p:growl />
 				<h:outputLabel value="Título" for="titulo"/>
 				<br/>
-				<p:inputText value="#{cadastroProdutoMBean.entidade.titulo}" label="titulo" id="titulo" size="60" />
+				<p:inputText value="#{cadastroProdutoMBean.entity.titulo}" label="titulo" id="titulo" size="60" />
 									
 				<br/>
 				
@@ -29,15 +29,15 @@
 				<br/>
 				
 				
-				<p:inputTextarea id="descricao"  value="#{cadastroProdutoMBean.entidade.descricao}" rows="5" cols="30"  maxlength="255"       
+				<p:inputTextarea id="descricao"  value="#{cadastroProdutoMBean.entity.descricao}" rows="5" cols="30"  maxlength="255"       
     					counterTemplate="{0} characters restando" autoResize="false"/>  
   
 				<br/>
 				
 				<h:outputLabel value="Categoria" for="categoria"/>
 				<br/>
-				<p:selectOneMenu value="#{cadastroProdutoMBean.entidade.categoria.id}" label="categoria" id="categoria" required="true">
-					<f:selectItems value="#{cadastroProdutoMBean.categoriasAsSelectItem}" />
+				<p:selectOneMenu value="#{cadastroProdutoMBean.entity.categoria.id}" label="categoria" id="categoria" required="true">
+					<f:selectItems value="#{listagemCategoriaMBean.categoriasAsSelectItem}" />
 				</p:selectOneMenu>				
 				
 				<br/>
@@ -45,7 +45,7 @@
 				
 				<h:outputLabel value="Valor" for="valor"/> <br/>
 				
-					<p:inputText value="#{cadastroProdutoMBean.entidade.valor}" label="valor" id="valor" />
+					<p:inputText value="#{cadastroProdutoMBean.entity.valor}" label="valor" id="valor" />
 									
 				
 				<br/>
@@ -53,7 +53,7 @@
 				
 				<h:outputLabel value="Disponível" for="disponivel"/>
 				<br/>
-				<h:selectBooleanCheckbox value="#{cadastroProdutoMBean.entidade.disponivel}" label="disponivel" id="disponivel"/>
+				<h:selectBooleanCheckbox value="#{cadastroProdutoMBean.entity.disponivel}" label="disponivel" id="disponivel"/>
 					
 				<br/>
 				

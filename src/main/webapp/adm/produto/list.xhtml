@@ -14,11 +14,16 @@
 	<ui:define name="corpo">
 		
 <h:form prependId="false">
+	
 	<p:button value="Cadastrar novo Produto" outcome="/adm/produto/create.jsf" />
-    <p:dataTable var="produto" value="#{produtoMBean.findAllAsLazyDataModel}"
-    paginator="true" rows="10" lazy="true"  
-      rowsPerPageTemplate="5,10,15" 
-     id="dataTable">
+	
+    <p:dataTable var="produto" 
+    	value="#{listagemProdutoMBean.findAllAsLazyDataModel}" 
+    	paginator="true" 
+    	rows="10" 
+    	lazy="true"  
+      	rowsPerPageTemplate="5,10,15" 
+      	id="dataTable">
 
         <f:facet name="header">
             Lista de Produtos
