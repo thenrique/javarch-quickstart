@@ -1,6 +1,7 @@
 package org.bootstrap.project.categoria;
 
 import org.bootstrap.project.domain.Categoria;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +15,11 @@ public class RemocaoCategoriaMBean extends AbstractDeleteManagedBean<Categoria>{
  
 	private static final long serialVersionUID = 5830984639159402372L;
 
+	@Autowired
+	private RemocaoCategoriaValidator validador;
+	
 	@Override
 	protected BeanValidation useBeanValidation() {			
-		return new RemocaoCategoriaValidator();
+		return validador;
 	}	
 }

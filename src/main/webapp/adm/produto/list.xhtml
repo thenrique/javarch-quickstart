@@ -61,13 +61,13 @@
         
         
 	    <p:column headerText="Opções" >
-            <p:button value="Editar" outcome="create" > 
+            <p:button value="Editar" outcome="edit" > 
             	<f:param name="idProduto" value="#{produto.id}"/>            	
             </p:button>
             
-            <p:commandButton action="#{produtoMBean.remover}" value="Remover" update="@form">
+            <p:commandButton action="#{remocaoProdutoMBean.performAction}" value="Remover" update="@form">
             	<f:setPropertyActionListener value="#{produto}"  
-                    target="#{produtoMBean.entidade}" />  
+                    target="#{remocaoProdutoMBean.entity}" />  
             </p:commandButton>
             	
         </p:column>

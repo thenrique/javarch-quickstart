@@ -1,10 +1,12 @@
 package org.bootstrap.project.categoria;
 
 import org.bootstrap.project.domain.Categoria;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
 import com.github.javarch.support.validation.BeanValidation;
 
+@Component
 public class RemocaoCategoriaValidator extends BeanValidation {
 
 	@Override
