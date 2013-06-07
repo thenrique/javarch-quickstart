@@ -4,10 +4,10 @@ import org.bootstrap.project.domain.Categoria;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
-import com.github.javarch.support.validation.BeanValidation;
+import com.github.javarch.support.validation.Validator;
 
 @Component
-public class RemocaoCategoriaValidator extends BeanValidation {
+public class RemocaoCategoriaValidator extends Validator {
 
 	@Override
 	protected void addExtraValidation(Object target, Errors errors) {

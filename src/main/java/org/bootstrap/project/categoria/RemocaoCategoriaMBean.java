@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.github.javarch.jsf.mbeans.AbstractDeleteManagedBean;
-import com.github.javarch.support.validation.BeanValidation;
+import com.github.javarch.support.validation.Validator;
 
 
 @Component
@@ -18,8 +18,9 @@ public class RemocaoCategoriaMBean extends AbstractDeleteManagedBean<Categoria>{
 	@Autowired
 	private RemocaoCategoriaValidator validador;
 	
+	
 	@Override
-	protected BeanValidation useBeanValidation() {			
+	protected Validator useValidator() {	
 		return validador;
-	}	
+	}
 }
