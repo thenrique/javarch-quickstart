@@ -16,4 +16,9 @@ public class LoginPage extends FluentPage {
 		assertThat(title()).isEqualTo("Login Page");
 	}
 
+	public void fillAndSubmitForm(String login, String password){
+		fill("input[name=j_username]").with( login );
+		fill("input[name=j_password]").with( password );
+		click("input[name=submit]");
+	}
 }
